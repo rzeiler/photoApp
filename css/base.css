@@ -1,0 +1,117 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+nav .brand-logo {
+    padding: 0 15px 0 15px;
+}
+nav{
+   background-color: rgba(255, 255, 255, .7) !important;
+}
+
+.progress.nav {
+    position: absolute !important;
+    margin-top: 0px !important;
+}
+
+.userView {}
+
+.preloader-holder {
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #ee6e73;
+    opacity: .8;
+}
+
+.preloader-text {
+    text-align: center;
+    position: fixed !important;
+    top: 10px;
+    width: 100%;
+}
+
+.preloader-wrapper {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    margin-left: -34px;
+    margin-top: -34px;
+}
+
+.slides>li>img {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+footer.page-footer {
+    margin-top: 20px;
+    padding-top: 0px;
+    background-color: #ee6e73;
+}
+
+.workplace {
+    background-color: #333;
+    display: block;
+    position: relative;
+    border-radius: 2px 2px 0 0;
+    height: 400px;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.workplace canvas, .workplace img {
+    display: none;
+}
+
+.row.option a {
+    display: block;
+    text-align: center;
+}
+
+.row.option a i {
+    margin-right: 4px;
+}
+
+#filters {
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+#filters li {
+    display: inline-block;
+    margin: 0 15px 0 0;
+}
+
+#filters li:last-child {
+    margin-right: 0;
+}
+
+#filters li a img {
+    display: block;
+}
+
+#filters li a {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+#filters li a.active {
+    cursor: default;
+}

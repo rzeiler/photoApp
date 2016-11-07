@@ -1,0 +1,60 @@
+<form name="userForm" novalidate ng-submit="save()">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <input ng-model="email" id="email" ng-minlength="3" ng-maxlength="10" length="10" type="text" class="validate" required>
+                    <label for="email" data-error="field is required">E-Mail</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <input ng-model="name" id="name" ng-minlength="3" ng-maxlength="10" length="10" type="text" class="validate" required>
+                    <label for="name" data-error="field is required">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <span class="chip" data-target="modal1">
+                      <img ng-src="{{src}}" alt="Avatar" /> Avatar change
+                </span>
+                <div id="modal1" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>Select one</h4>
+                        <div class="row">
+                            <div ng-repeat="picture in pictures">
+                                <div class="col s3">
+                                    <div class="card modal-action modal-close">
+                                        <div class="card-image" ng-click="set(picture.src)">
+                                            <img ng-src="{{picture.src}}" alt="{{picture.title}}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a   class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="pwd" id="pwd" ng-minlength="3" ng-maxlength="10" length="10" type="password" ng-change="check()" class="validate">
+                    <label for="pwd" data-error="field is required">Password</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="pwdcompare" ng-minlength="3" ng-maxlength="10" length="10" id="pwdcompare" type="password" ng-change="check()" class="validate">
+                    <label for="pwdcompare" data-error="field is required">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="submit" id="submit" class="waves-effect waves-light btn" ng-disabled="userForm.$invalid || userForm.$pending" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

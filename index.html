@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="photoApp">
+
+<head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/base.css" media="screen,projection" />
+    <!-- js -->
+    <script type="text/javascript" src="angualr/angular.min.js"></script>
+    <script type="text/javascript" src="angualr/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="angualr/angular-route.min.js"></script>
+    <script type="text/javascript" src="angualr/angular-animate.min.js"></script>
+    <script src="app/app.min.js"></script>
+    <script src="app/index.min.js"></script>
+    <script src="app/album.min.js"></script>
+    <script src="app/photo.min.js"></script>
+    <script src="app/edit.min.js"></script>
+    <script src="app/show.min.js"></script>
+    <script src="app/signin.min.js"></script>
+    <script src="app/user.min.js"></script>
+    <script src="caman/caman.full.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body ng-controller='appController'>
+    <header>
+        <div id="nav" class="navbar-fixed">
+            <nav class="white z-depth-0">
+                <div class="progress nav" data-loading ng-model="isLoading">
+                    <div class="indeterminate"></div>
+                </div>
+                <a class="black-text brand-logo">
+                    <span>{{index.title}}</span>
+                </a>
+                <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li ng-repeat="link in index.links"><a class="black-text {{link.class}}" href="{{link.url}}">{{link.title}}</a></li>
+                    <li ng-repeat="btn in index.btns"><a class="black-text" data-target="{{btn.target}}">{{btn.title}}</a></li>
+                </ul>
+            </nav>
+        </div>
+        <ul class="side-nav" id="mobile-demo">
+            <li>
+                <div ng-click="openUser()" class="userView">
+                    <div class="background">
+                        <img src="images\background.png" alt="background" />
+                    </div>
+                    <a><img class="circle" ng-src="{{index.src}}" alt="Avatar" /></a>
+                    <a><span class=" white-text name">{{index.name}}</span></a>
+                    <a><span class=" white-text email">{{index.email}}</span></a>
+                </div>
+            </li>
+            <li ng-repeat="link in index.links"><a class=" {{link.class}}" href="{{link.url}}">{{link.title}}</a></li>
+            <li ng-repeat="btn in index.btns"><a class=" " data-target="{{btn.target}}">{{btn.title}}</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="ng-view"></div>
+    </main>
+    <footer class="page-footer grey darken-2">
+        <div class="footer-copyright grey darken-3">
+            <div class=" ">&copy; 2016 photoAPP
+            </div>
+        </div>
+    </footer>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script src="app/effect.min.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+
+    <script type="text/javascript">
+        $('nav.white').addClass('z-depth-0');
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 1) {
+                $('.navbar-fixed > nav.white').removeClass('z-depth-0');
+            } else {
+                $('.navbar-fixed > nav.white').addClass('z-depth-0');
+            }
+        });
+        $(document).ready(function() {
+            $('.button-collapse').sideNav();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<div class="slider fullscreen" data-indicators="true">
+    <div class="progress nav">
+        <div class="indeterminate"></div>
+    </div>
+    <ul class="slides grey darken-4">
+        <li ng-repeat="picture in pictures">
+            <img ng-src="{{picture.src}}" data-id="{{picture.id}}" alt="bild" ng-init="init(picture.id)">
+            <div class="caption {{picture.cssclass}}">
+                <h6>{{title}}</h6>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 25px;">
+    <a class="btn-floating btn-large blue lighten-1">
+        <i class="material-icons">menu</i>
+    </a>
+    <ul>
+        <li ng-click="exit()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons">close</i>
+            </a>
+        </li>
+        <li ng-click="prev()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons">fast_rewind</i>
+            </a>
+        </li>
+        <li ng-click="pause()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons pause">pause_circle_outline</i>
+            </a>
+        </li>
+        <li ng-click="play()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons play">play_circle_outline</i>
+            </a>
+        </li>
+        <li ng-click="next()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons">fast_forward</i>
+            </a>
+        </li>
+        <li ng-click="edit()">
+            <a class="btn-floating blue lighten-1">
+                <i class="material-icons">mode_edit</i>
+            </a>
+        </li>
+    </ul>
+</div>

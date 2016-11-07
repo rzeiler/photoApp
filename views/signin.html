@@ -1,0 +1,24 @@
+<div back-img="http://placekitten.com/g/250/300">
+
+
+
+<form name="signForm" novalidate ng-submit="signin()">
+    <div class="row">
+        <div class="col s12 m8 l4 offset-m2 offset-l4">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" ng-model="email" type="text" class="validate" required>
+                    <label for="email" data-error="Required field" data-success="Ok">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="password" ng-model="pwd" type="password" class="validate" required>
+                    <label for="password" data-error="Required field" data-success="Ok">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" id="submit" class="waves-effect waves-light btn" ng-disabled="signForm.$invalid || signForm.$pending" value="Submit"/>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
