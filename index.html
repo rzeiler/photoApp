@@ -6,8 +6,8 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="css/base.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/base.min.css" media="screen,projection" />
     <!-- js -->
     <script type="text/javascript" src="angualr/angular.min.js"></script>
     <script type="text/javascript" src="angualr/angular-sanitize.min.js"></script>
@@ -33,21 +33,23 @@
                 <div class="progress nav" data-loading ng-model="isLoading">
                     <div class="indeterminate"></div>
                 </div>
-                <a class="black-text brand-logo">
-                    <span>{{index.title}}</span>
-                </a>
-                <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li ng-repeat="link in index.links"><a class="black-text {{link.class}}" href="{{link.url}}">{{link.title}}</a></li>
-                    <li ng-repeat="btn in index.btns"><a class="black-text" data-target="{{btn.target}}">{{btn.title}}</a></li>
-                </ul>
+                <div class="navpad">
+                    <a class="black-text brand-logo">
+                        <span>{{index.title}}</span>
+                    </a>
+                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a>
+                    <ul class="right">
+                        <li ng-repeat="link in index.links"><a class="black-text {{link.class}}" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a></li>
+                        <li ng-repeat="btn in index.btns"><a class="waves-effect waves-light btn" data-target="{{btn.target}}"><span>{{btn.title}}</span><i class="material-icons right">{{btn.icon}}</i></a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
         <ul class="side-nav" id="mobile-demo">
             <li>
                 <div ng-click="openUser()" class="userView">
                     <div class="background">
-                        <img src="images\background.png" alt="background" />
+
                     </div>
                     <a><img class="circle" ng-src="{{index.src}}" alt="Avatar" /></a>
                     <a><span class=" white-text name">{{index.name}}</span></a>
@@ -55,7 +57,7 @@
                 </div>
             </li>
             <li ng-repeat="link in index.links"><a class=" {{link.class}}" href="{{link.url}}">{{link.title}}</a></li>
-            <li ng-repeat="btn in index.btns"><a class=" " data-target="{{btn.target}}">{{btn.title}}</a></li>
+            <li ng-repeat="btn in index.btns"><a class="waves-effect waves-light btn" data-target="{{btn.target}}">{{btn.title}}</a></li>
         </ul>
     </header>
     <main>
@@ -69,7 +71,7 @@
     </footer>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="app/effect.min.js"></script>
     <script src="js/jquery.mousewheel.min.js"></script>
 

@@ -6,11 +6,7 @@ myApp.controller('albumController', ['$scope', '$sce', '$http', '$routeParams', 
     $scope.index.title = "Album";
     $scope.index.showCollapse = true;
     $scope.index.links = [];
-    btns = [{
-        'target': 'modalAlbum',
-        'title': 'New'
-    }];
-    $scope.index.btns = btns;
+    $scope.index.btns = [];
     /* modal */
     $scope.templateUrl = 'views/album_form.html';
     /* get alben */

@@ -11,19 +11,63 @@ main {
     flex: 1 0 auto;
 }
 
+body.signForm {
+    background-image: url(../images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.signForm nav.white {
+    background-color: transparent !important;
+}
+
+body.signForm * {
+    color: #fff !important;
+}
+
+body.signForm footer, body.signForm .page-footer, body.signForm .grey, body.signForm .darken-2 {
+    background-color: transparent !important;
+}
+
+.background {
+    height: 100%;
+    background-image: url(../images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* Navbar */
+
 nav .brand-logo {
     padding: 0 15px 0 15px;
 }
-nav{
-   background-color: rgba(255, 255, 255, .7) !important;
+
+nav li a i {
+    font-size: 1.3rem !important;
+    line-height: inherit !important;
+}
+
+nav li a.btn {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+@media only screen and (max-width: 601px) {
+    nav li a span {
+        display: none;
+    }
+    nav li a i {
+        margin: 0px !important;
+    }
 }
 
 .progress.nav {
     position: absolute !important;
     margin-top: 0px !important;
 }
-
-.userView {}
 
 .preloader-holder {
     z-index: 2;
@@ -60,6 +104,11 @@ footer.page-footer {
     margin-top: 20px;
     padding-top: 0px;
     background-color: #ee6e73;
+}
+
+.footer-copyright, .navpad {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .workplace {

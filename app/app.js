@@ -3,6 +3,13 @@ var myApp = angular.module('photoApp', ['ngRoute', 'ngSanitize', 'ngAnimate']);
 myApp.service('APIInterceptor', ['$q', '$location', function($q, $location) {
     var service = this;
     service.response = function(response) {
+        if (typeof response.data === 'string') {
+            if (response.data.indexOf('name="signForm"') > 1) {
+                $('body').addClass('signForm');
+            } else {
+                $('body').removeClass('signForm');
+            }
+        }
         $('.button-collapse').sideNav('hide');
         var msg = response.data.message;
         if (msg) {
@@ -18,7 +25,7 @@ myApp.service('APIInterceptor', ['$q', '$location', function($q, $location) {
     };
 }]);
 /* Define Routing for app */
-myApp.config(['$routeProvider', '$httpProvider',function($routeProvider, $httpProvider) {
+myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/album.html',
         controller: 'albumController'

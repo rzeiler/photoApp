@@ -11,7 +11,7 @@
          action: 'get_user',
          limit: 1
      }).then(function(response) {
-         if (response.data.message === null) {
+         if (response.data.message === undefined) {
              $scope.index.email = response.data.user.email;
              $scope.index.name = response.data.user.name;
              $scope.index.src = response.data.user.picture;

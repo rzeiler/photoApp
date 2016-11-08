@@ -1,6 +1,6 @@
 var canvas;
 var data;
-myApp.controller('editController',  ['$scope', '$sce', '$http', '$routeParams', '$location', function($scope, $sce, $http, $routeParams, $location) {
+myApp.controller('editController', ['$scope', '$sce', '$http', '$routeParams', '$location', function($scope, $sce, $http, $routeParams, $location) {
     $('nav.white').addClass('z-depth-0');
     $('div.navbar-fixed nav').show();
     $('div#nav').removeClass('navbar-fixed');
@@ -13,16 +13,19 @@ myApp.controller('editController',  ['$scope', '$sce', '$http', '$routeParams', 
     $scope.index.title = 'Edit';
     btns = [{
         'target': 'modalDelete',
-        'title': 'Delete'
-    } ];
+        'title': 'Delete',
+        'icon': 'delete'
+    }, {
+        'class': 'save_click',
+        'title': 'Save',
+        'icon': 'save'
+    }];
     $scope.index.btns = btns;
     links = [{
         'url': '#/' + backurl,
         'class': ' ',
-        'title': 'Back'
-    }, {
-        'class': 'save_click',
-        'title': 'Save'
+        'title': 'Back',
+        'icon': 'chevron_left'
     }];
     $scope.index.links = links;
     $http.post('tph.php', {

@@ -11,19 +11,20 @@ var folder_data;
 myApp.controller('photoController', ['$scope', '$sce', '$http', '$routeParams', '$location', '$timeout', function($scope, $sce, $http, $routeParams, $location, $timeout) {
     locSco = $scope;
     folder = $routeParams.id;
-
     $('nav.white').addClass('z-depth-0');
     $('div.navbar-fixed nav').show();
     $('div#nav').addClass('navbar-fixed');
     links = [{
         'url': '#/album',
         'class': '',
-        'title': 'Back'
+        'title': 'Back',
+        'icon': 'chevron_left'
     }];
     $scope.index.links = links;
     btns = [{
         'target': 'modalAlbum',
-        'title': 'Edit'
+        'title': 'Edit',
+        'icon': 'mode_edit'
     }];
     $scope.index.btns = btns;
     $scope.parentobj = {};
