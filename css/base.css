@@ -41,25 +41,25 @@ body.signForm footer, body.signForm .page-footer, body.signForm .grey, body.sign
 
 /* Navbar */
 
-nav .brand-logo {
-    padding: 0 15px 0 15px;
+nav{
+  overflow: hidden;
 }
 
-nav li a i {
+nav a i {
     font-size: 1.3rem !important;
     line-height: inherit !important;
 }
 
-nav li a.btn {
+nav a.btn {
     margin-left: 5px !important;
     margin-right: 5px !important;
 }
 
 @media only screen and (max-width: 601px) {
-    nav li a span {
+    nav a span {
         display: none;
     }
-    nav li a i {
+    nav a i {
         margin: 0px !important;
     }
 }

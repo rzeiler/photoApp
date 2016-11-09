@@ -29,19 +29,13 @@
 <body ng-controller='appController'>
     <header>
         <div id="nav" class="navbar-fixed">
-            <nav class="white z-depth-0">
-                <div class="progress nav" data-loading ng-model="isLoading">
-                    <div class="indeterminate"></div>
-                </div>
-                <div class="navpad">
-                    <a class="black-text brand-logo">
-                        <span>{{index.title}}</span>
-                    </a>
-                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a>
-                    <ul class="right">
-                        <li ng-repeat="link in index.links"><a class="black-text {{link.class}}" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a></li>
-                        <li ng-repeat="btn in index.btns"><a class="waves-effect waves-light btn" data-target="{{btn.target}}"><span>{{btn.title}}</span><i class="material-icons right">{{btn.icon}}</i></a></li>
-                    </ul>
+            <nav class="white row">
+                <div class="col s2">
+                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a></div>
+                <div class="col s4 black-text brand-logo">{{index.title}}</div>
+                <div class="col s6 right-align">
+                    <a ng-repeat="link in index.links" class="black-text {{link.class}} btn-flat" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a>
+                    <a ng-repeat="btn in index.btns" class="waves-effect waves-light btn" data-target="{{btn.target}}"><span>{{btn.title}}</span><i class="material-icons right">{{btn.icon}}</i></a>
                 </div>
             </nav>
         </div>
