@@ -1,28 +1,36 @@
 <div class="row">
-    <div ng-repeat="picture in pictures">
-        <div class="col s6 m4 l2">
-            <div class="card">
-                <div class="card-image" ng-click="open(picture.id)">
-                    <img ng-src="{{picture.src}}" alt="{{picture.title}}" />
-                </div>
-            </div>
+	<div ng-repeat="picture in pictures">
+		<div class="col s6 m4 l2">
+			<div class="card hoverable" id="card{{picture.id}}">
+        <div class="options">
+          <a class="waves-effect waves-teal btn-flat white-text" ng-click="open(picture.id)"><i class="material-icons">desktop_windows</i>
+          </a>
+          <a class="waves-effect waves-teal btn-flat white-text" ng-click="edit(picture.id)"><i class="material-icons">mode_edit</i>
+          </a>
+          <a class="waves-effect waves-teal btn-flat white-text" ng-click="delete(picture.id,picture.src)"><i class="material-icons">delete</i>
+          </a>
         </div>
-    </div>
+				<div class="card-image" ng-click="open(picture.id)">
+					<img ng-src="{{picture.src}}" alt="{{picture.title}}"/>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a ng-click="add()" class="btn-floating btn-large waves-effect waves-light blue lighten-1">
-        <i class="material-icons">add</i>
-    </a>
+	<a ng-click="add()" class="btn-floating btn waves-effect waves-light blue lighten-1">
+		<i class="material-icons">add</i>
+	</a>
 </div>
 <div id="modal1" class="modal">
-    <div class="modal-content" style=" position: relative; ">
-        <h4>Picture processing</h4>
-        <p class="info">take a while</p>
-        <div class="progress">
-            <div class="determinate" style="width: 1%"></div>
-        </div>
-        <div id="preview"></div>
-    </div>
+	<div class="modal-content" style=" position: relative; ">
+		<h4>Picture processing</h4>
+		<p class="info">take a while</p>
+		<div class="progress">
+			<div class="determinate" style="width: 1%"></div>
+		</div>
+		<div id="preview"></div>
+	</div>
 </div>
 <input type="file" id="file" style="display:none;" accept=".gif, .jpg, .png, .jpeg" multiple>
 <!-- Modal Structure -->

@@ -1,21 +1,27 @@
-
-
 <div class="row">
-    <div ng-repeat="album in parentobj.albums">
-        <div class="col s12 m6 l3">
-            <div class="card hoverable" ng-click="open(album.id,album.title)">
-                <div class="card-image">
-                    <img ng-src="{{album.src}}" alt="{{album.title}}" />
-                    <span class="card-title">{{album.title}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div ng-repeat="album in parentobj.albums">
+		<div class="col s12 m6 l3">
+			<div class="card hoverable">
+				<div class="options">
+					<a class="waves-effect waves-teal btn-flat white-text" ng-click="open(album.id,album.title)"><i class="material-icons">desktop_windows</i>
+					</a>
+					<a class="waves-effect waves-teal btn-flat white-text" ng-click="edit(album.id,album.title)"><i class="material-icons">mode_edit</i>
+					</a>
+					<a class="waves-effect waves-teal btn-flat white-text" ng-click="delete(album.id,album.title)"><i class="material-icons">delete</i>
+					</a>
+				</div>
+				<div class="card-image" ng-click="open(album.id,album.title)">
+					<img ng-src="{{album.src}}" alt="{{album.title}}"/>
+					<span class="card-title">{{album.title}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <button data-target="modalAlbum" type="button" class="btn-floating btn-large waves-effect waves-light blue lighten-1">
-      <i class="material-icons">add</i>
-    </button>
+	<button data-target="modalAlbum" type="button" class="btn-floating btn waves-effect waves-light blue lighten-1">
+		<i class="material-icons">add</i>
+	</button>
 </div>
 <!-- Modal Structure -->
 <div ng-include="templateUrl"></div>

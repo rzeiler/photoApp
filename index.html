@@ -7,7 +7,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="css/base.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/base.css" media="screen,projection" />
     <!-- js -->
     <script type="text/javascript" src="angualr/angular.min.js"></script>
     <script type="text/javascript" src="angualr/angular-sanitize.min.js"></script>
@@ -31,10 +31,10 @@
         <div id="nav" class="navbar-fixed">
             <nav class="white row">
                 <div class="col s2">
-                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="black-text material-icons">menu</i></a></div>
-                <div class="col s4 black-text brand-logo">{{index.title}}</div>
+                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="grey-text material-icons">menu</i></a></div>
+                <div class="col s4 grey-text brand-logo">{{index.title}}</div>
                 <div class="col s6 right-align">
-                    <a ng-repeat="link in index.links" class="black-text {{link.class}} btn-flat" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a>
+                    <a ng-repeat="link in index.links" class="grey-text {{link.class}} btn-flat" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a>
                     <a ng-repeat="btn in index.btns" class="waves-effect waves-light btn" data-target="{{btn.target}}"><span>{{btn.title}}</span><i class="material-icons right">{{btn.icon}}</i></a>
                 </div>
             </nav>
