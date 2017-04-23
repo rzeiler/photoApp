@@ -3,12 +3,22 @@
   session_start();
   $date = new DateTime();
   $postdata = file_get_contents('php://input');
-  $request = json_decode($postdata);
+
+$request = (object) $_GET;
+
+
+
+
   $ini = parse_ini_file('db.ini');
   $arr = array();
+  $arr = array_merge($arr, array('message' =>$request->action));
 
-  error_reporting(E_ALL);
-  ini_set('display_errors', '1');
+
+
+
+
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', '1');
 
   /* http://www.w3schools.com/php/php_mysql_select.asp */
   if (isset($request->action)) {
@@ -47,10 +57,20 @@
                   $folderId = $conn->insert_id;
                   $sql = "DELETE FROM access  WHERE folder=$folderId;";
                   $conn->query($sql);
-                  foreach ($request->access as $item) {
-                      $sql = "INSERT INTO access (account,folder) VALUES ($item,$folderId);";
-                      $conn->query($sql);
+                  if( isset($request->access)){
+                    foreach ($request->access as $item) {
+                        $sql = "INSERT INTO access (account,folder) VALUES ($item,$folderId);";
+                        $conn->query($sql);
+                    }
                   }
+              } else {
+                  $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
+              }
+          }
+          if ($request->action == 'remove_folder' && isset($request->id)) {
+              $sql = "DELETE FROM folders  WHERE if=$request->id;";
+              if ($conn->query($sql) === true) {
+                  $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
               } else {
                   $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
               }

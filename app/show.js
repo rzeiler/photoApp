@@ -1,68 +1,70 @@
-myApp.controller('showController', ['$scope', '$sce', '$http', '$routeParams', '$location', '$timeout',  function($scope, $sce, $http, $routeParams, $location) {
-    $('nav.white').addClass('z-depth-0');
-    $('div.navbar-fixed nav').hide();
-    var liIndex = 0;
-    var atIndex = 0;
-    $http.post('tph.php', {
-        action: 'get_pictures',
-        id: $routeParams.id
-    }).then(function(response) {
-        $scope.pictures = response.data.pictures;
-        $scope.$parent.pageTitle = response.data.title;
+$(document).bind('openShow', function(e, album, id) {
+  $('nav').hide();
+  $("main").load("views/show.html", function() {
+    $.getJSON('tph.php', {
+      action: "get_pictures",
+      id: album
+    }, function(result) {
+      data = result;
+      console.log(data);
+      if (data.message == "unknown") {
+        routie('signin');
+      }
+      var row = $('#photos');
+      $.each(data.pictures, function(i, v) {
+        var li = $('<li><img src="' + v.src + '" /><div class="caption"><h6>' + v.title + '</h6></div></li>')
+        $('.slides').append(li);
+        if (id == v.id) {
+          atIndex = i;
+        }
+      });
+      $('.slider').slider({
+        full_width: true,
+        indicators: true,
+        Interval: 50
+      });
+      $("ul.indicators").hide();
+      $("ul.indicators li.indicator-item:eq(" + (atIndex - 1) + ")").trigger("click");
+      $('div.slider > div.progress').hide();
+      setForward();
     });
-    $scope.init = function init(id) {
-        liIndex++;
-        if (id == $routeParams.pid) {
-            atIndex = liIndex;
-        }
-        if (liIndex >= $scope.pictures.length) {
-            setTimeout(function() {
-                $('.slider').slider({
-                    full_width: true,
-                    indicators: true,
-                    Interval: 50
-                });
-                $("ul.indicators").hide();
-                $("ul.indicators li.indicator-item:eq(" + (atIndex - 1) + ")").trigger("click");
-                $('div.slider > div.progress').hide();
-                setForward();
-            }, 10);
-        }
-    };
 
     function setBreak() {
-        $('.slider').slider('pause');
-        $('i.play').text('play_circle_outline');
-        $('i.pause').text('pause_circle_filled');
+      $('.slider').slider('pause');
+      $('i.play').text('play_circle_outline');
+      $('i.pause').text('pause_circle_filled');
     }
 
     function setForward() {
-        $('.slider').slider('start');
-        $('i.play').text('play_circle_filled');
-        $('i.pause').text('pause_circle_outline');
+      $('.slider').slider('start');
+      $('i.play').text('play_circle_filled');
+      $('i.pause').text('pause_circle_outline');
     }
     /* actions */
-    $scope.play = function play() {
-        setForward();
-    };
-    $scope.pause = function pause() {
-        setBreak();
-    };
-    $scope.next = function next() {
-        setBreak();
-        $('.slider').slider('next');
-    };
-    $scope.prev = function prev() {
-        setBreak();
-        $('.slider').slider('prev');
-    };
-    $scope.exit = function exit() {
-        setBreak();
-        $location.path("/photo/" + $routeParams.id);
-    };
-    $scope.edit = function edit() {
-        setBreak();
-        var id = $("ul.slides>li.active>img").data('id');
-        $location.path("/photo/" + $routeParams.id + "/edit/" + id);
-    };
-}]);
+    $('#play').click(function() {
+      setForward();
+    });
+    $('#pause').click(function() {
+      setBreak();
+    });
+    $('#next').click(function() {
+      setBreak();
+      $('.slider').slider('next');
+    });
+    $('#prev').click(function() {
+      setBreak();
+      $('.slider').slider('prev');
+    });
+    $('#exit').click(function() {
+      setBreak();
+      $('nav').show();
+      routie('photo/' + album);
+    });
+    $('#edit').click(function() {
+      setBreak();
+      $('nav').show();
+      var id = $("ul.slides>li.active>img").data('id');
+      routie('/photo/' + album + "/edit/" + id);
+    });
+  });
+});
