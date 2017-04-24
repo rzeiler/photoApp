@@ -61,12 +61,16 @@
   <script src="js/jquery.mousewheel.min.js"></script>
 
 
-  <script type="text/javascript" src="app/routie.min.js"></script>
+
+    <script src="caman/caman.full.js"></script>
+
+  <script src="app/effect.min.js"></script>
+  <script src="app/routie.min.js"></script>
   <script src="app/sign.js"></script>
   <script src="app/album.js"></script>
   <script src="app/photo.js"></script>
   <script src="app/show.js"></script>
-
+  <script src="app/edit.js"></script>
   <div class="result">
 
   </div>
@@ -114,6 +118,15 @@
         'photo/:album/show/:id': function(album, id) {
           $('header').show();
           $(document).triggerHandler('openShow', [album, id]);
+          obj = [{
+            url: '#album',
+            title: 'Album'
+          }];
+          setTab(obj);
+        },
+        'photo/:album/edit/:id': function(album, id) {
+          $('header').show();
+          $(document).triggerHandler('openEdit', [album, id]);
           obj = [{
             url: '#album',
             title: 'Album'
