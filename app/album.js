@@ -1,8 +1,10 @@
 $(document).bind('openAlbum', function(e, a) {
+   $('.more-opt').html("");
   $("main").load("views/album.html", function() {
     $('.modal').modal();
     $('select').material_select();
     Materialize.updateTextFields();
+
     $.get("views/album_card.html", function(card) {
       var data;
       $.getJSON('tph.php', {
@@ -17,7 +19,7 @@ $(document).bind('openAlbum', function(e, a) {
         window.users = data.users;
         $.each(data.folders, function(i, v) {
           var _card = $(card);
-          _card.find('img').attr('src', v.src);
+          _card.find('div.card').css('background-image', 'url(' + v.src + ')');
           _card.find('.card-title').text(v.title);
           $('.brand-logo').text('Album');
           _card.find('.open').click(function() {

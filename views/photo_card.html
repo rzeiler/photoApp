@@ -1,17 +1,12 @@
-<div ng-repeat="picture in pictures">
-  <div class="col s6 m4 l2">
-    <div class="card hoverable" id="card{{picture.id}}">
-      <div class="options">
-        <a class="waves-effect waves-teal btn-flat white-text" ng-click="open(picture.id)"><i class="material-icons">desktop_windows</i>
-        </a>
-        <a class="waves-effect waves-teal btn-flat white-text" ng-click="edit(picture.id)"><i class="material-icons">mode_edit</i>
-        </a>
-        <a class="waves-effect waves-teal btn-flat white-text" ng-click="delete(picture.id,picture.src)"><i class="material-icons">delete</i>
-        </a>
-      </div>
-      <div class="card-image" ng-click="open(picture.id)">
-        <img ng-src="{{picture.src}}" alt="{{picture.title}}"/>
-      </div>
+<div class="col s12 m6 l3 ">
+  <div class="card hoverable">
+    <div class="options">
+      <a class="waves-effect waves-teal btn-flat white-text open"><i class="material-icons">open_with</i></a>
+      <a class="waves-effect waves-teal btn-flat white-text edit"><i class="material-icons">mode_edit</i></a>
+      <a class="waves-effect waves-teal btn-flat white-text delete"><i class="material-icons">delete</i></a>
+    </div>
+    <div class="card-image">
+      <span class="card-title"></span>
     </div>
   </div>
 </div>

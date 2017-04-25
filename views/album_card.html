@@ -1,18 +1,16 @@
-<div>
-  <div class="col s12 m6 l3">
-    <div class="card hoverable">
-      <div class="options">
-        <a class="waves-effect waves-teal btn-flat white-text open" ><i class="material-icons">desktop_windows</i>
-        </a>
-        <a class="waves-effect waves-teal btn-flat white-text edit" ><i class="material-icons">mode_edit</i>
-        </a>
-        <a class="waves-effect waves-teal btn-flat white-text delete" ><i class="material-icons">delete</i>
-        </a>
+<div class="col s12 m6 l3">
+  <div class="card hoverable">
+    <div class="options">
+      <div class="dropdown-group">
+        <a class="waves-effect btn-flat"><i class="white-text material-icons">more_vert</i></a>
+        <ul  class='dropdown-content'>
+          <li class="edit"><a><i class="material-icons left">mode_edit</i>Edi</a></li>
+          <li class="delete"><a><i class="material-icons left">delete</i>Delete</a></li>
+        </ul>
       </div>
-      <div class="card-image" ng-click="open(album.id,album.title)">
-        <img/>
-        <span class="card-title"> </span>
-      </div>
+    </div>
+    <div class="card-image open">
+      <span class="card-title"> </span>
     </div>
   </div>
 </div>

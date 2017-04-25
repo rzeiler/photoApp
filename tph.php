@@ -41,6 +41,12 @@ $request = (object) $_GET;
                   $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
               }
           }
+          if($request->action == 'set_folder_title' && isset($request->title) && isset($request->id)){
+            $sql = "UPDATE folders SET title='$request->title' WHERE id=$request->id;";
+            if ($conn->query($sql) === true) {
+              $arr = array_merge($arr, array('title' => $request->title, 'message' => 'Save title successfully!'));
+            }
+          }
           /* add folder */
           if ($request->action == 'set_folder' && isset($request->title) && isset($request->detail) && isset($request->id)) {
               $sql = "UPDATE folders SET title='$request->title', detail='$request->detail' WHERE id=$request->id;";
@@ -207,12 +213,12 @@ $request = (object) $_GET;
               }
               $arr = array_merge($arr, array('pictures' => $tmp));
               unset($tmp);
-              $sql = "SELECT f.id, f.title, f.detail, a.name FROM folders AS f LEFT JOIN account AS a ON f.owner=a.id WHERE f.id=$request->id";
+              $sql = "SELECT f.id, f.title, f.detail, a.name, f.owner FROM folders AS f LEFT JOIN account AS a ON f.owner=a.id WHERE f.id=$request->id";
               $tmp = array();
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
-                      $tmp = array('id' => $row['id'], 'title' => $row['title'], 'detail' => $row['detail'], 'name' => $row['name']);
+                      $tmp = array('id' => $row['id'], 'title' => $row['title'], 'detail' => $row['detail'], 'name' => $row['name'], 'allowEdit' => ($row['owner']==$user) ? true:false);
                   }
               }
               $arr = array_merge($arr, array('folder' => $tmp));
