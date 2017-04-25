@@ -1,87 +1,175 @@
 <!DOCTYPE html>
-<html ng-app="photoApp">
-
-<head>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="css/base.css" media="screen,projection" />
-    <!-- js -->
-    <script type="text/javascript" src="angualr/angular.min.js"></script>
-    <script type="text/javascript" src="angualr/angular-sanitize.min.js"></script>
-    <script type="text/javascript" src="angualr/angular-route.min.js"></script>
-    <script type="text/javascript" src="angualr/angular-animate.min.js"></script>
-    <script src="app/app.min.js"></script>
-    <script src="app/index.min.js"></script>
-    <script src="app/album.min.js"></script>
-    <script src="app/photo.min.js"></script>
-    <script src="app/edit.min.js"></script>
-    <script src="app/show.min.js"></script>
-    <script src="app/signin.min.js"></script>
-    <script src="app/user.min.js"></script>
-    <script src="caman/caman.full.js"></script>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-
-<body ng-controller='appController'>
-    <header>
-        <div id="nav" class="navbar-fixed">
-            <nav class="white row">
-                <div class="col s2">
-                    <a href="#" data-activates="mobile-demo" ng-show="index.showCollapse" class="button-collapse"><i class="grey-text material-icons">menu</i></a></div>
-                <div class="col s4 grey-text brand-logo">{{index.title}}</div>
-                <div class="col s6 right-align">
-                    <a ng-repeat="link in index.links" class="grey-text {{link.class}} btn-flat" href="{{link.url}}"><span>{{link.title}}</span><i class="material-icons left">{{link.icon}}</i></a>
-                    <a ng-repeat="btn in index.btns" class="waves-effect waves-light btn" data-target="{{btn.target}}"><span>{{btn.title}}</span><i class="material-icons right">{{btn.icon}}</i></a>
-                </div>
-            </nav>
-        </div>
-        <ul class="side-nav" id="mobile-demo">
-            <li>
-                <div ng-click="openUser()" class="userView">
-                    <div class="background">
-
-                    </div>
-                    <a><img class="circle" ng-src="{{index.src}}" alt="Avatar" /></a>
-                    <a><span class=" white-text name">{{index.name}}</span></a>
-                    <a><span class=" white-text email">{{index.email}}</span></a>
-                </div>
-            </li>
-            <li ng-repeat="link in index.links"><a class=" {{link.class}}" href="{{link.url}}">{{link.title}}</a></li>
-            <li ng-repeat="btn in index.btns"><a class="waves-effect waves-light btn" data-target="{{btn.target}}">{{btn.title}}</a></li>
-        </ul>
-    </header>
-    <main>
-        <div class="ng-view"></div>
-    </main>
-    <footer class="page-footer grey darken-2">
-        <div class="footer-copyright grey darken-3">
-            <div class=" ">&copy; 2016 photoAPP
-            </div>
-        </div>
-    </footer>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script src="app/effect.min.js"></script>
-    <script src="js/jquery.mousewheel.min.js"></script>
-
-    <script type="text/javascript">
-        $('nav.white').addClass('z-depth-0');
-        $(window).scroll(function() {
-            if ($(document).scrollTop() > 1) {
-                $('.navbar-fixed > nav.white').removeClass('z-depth-0');
-            } else {
-                $('.navbar-fixed > nav.white').addClass('z-depth-0');
-            }
-        });
-        $(document).ready(function() {
-            $('.button-collapse').sideNav();
-        });
-    </script>
-</body>
-
+<html>
+	<head>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="css/base.css" media="screen,projection"/>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<nav class="white nav-extended">
+			<div class="nav-wrapper container">
+				<a href="#" data-activates="mobile-demo" class="button-collapse grey-text">
+					<i class="material-icons">menu</i>
+				</a>
+				<div class="grey-text brand-logo"></div>
+				<ul id="nav-mobile" class="right hide-on-med-and-down more-opt">
+					<li>
+						<a href=""></a>
+					</li>
+				</ul>
+			</div>
+			<div class="nav-content grey-text container">
+				<ul class="tabs tabs-transparent">
+					<li class="tab">
+						<a href=""></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<ul class="side-nav more-opt" id="mobile-demo">
+			<li>
+				<a href=""></a>
+			</li>
+		</ul>
+		<div style="display:none;">
+			<iframe src="" id="down"></iframe>
+		</div>
+		<main class="container"></main>
+		<footer class="page-footer grey darken-2">
+			<div class="container">
+				<div class="footer-copyright">
+					<div class=" ">&copy; 2016 photoAPP
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.js"></script>
+		<script src="js/jquery.mousewheel.min.js"></script>
+		<script src="caman/caman.full.min.js"></script>
+		<script src="app/routie.min.js"></script>
+		<script src="app/sign.js"></script>
+		<script src="app/album.js"></script>
+		<script src="app/photo.js"></script>
+		<script src="app/show.js"></script>
+		<script src="app/edit.js"></script>
+		<div class="result"></div>
+		<script type="text/javascript">
+			$('nav.white').addClass('z-depth-0');
+			$(window).scroll(function () {
+				if ($(document).scrollTop() > 1) {
+					$('.navbar-fixed > nav.white').removeClass('z-depth-0');
+				} else {
+					$('.navbar-fixed > nav.white').addClass('z-depth-0');
+				}
+			});
+			$(document).ready(function () {
+				$('.button-collapse').sideNav();
+				var obj = [];
+				var setTab = function (obj) {
+					$('ul.tabs').html("");
+					$.each(obj, function (i, v) {
+						var li = $('<li class="tab grey-text "><a class="grey-text" >' + v.title + '</a></li>');
+						$(li).data('url', v.url);
+						li.click(function () {
+							routie($(this).data('url'));
+						});
+						$('ul.tabs').append(li);
+					});
+					 
+				}
+				setTab(obj);
+				routie({
+					'album': function () {
+						$('header').show();
+						$(document).triggerHandler('openAlbum');
+						obj = [
+							{
+								url: '#album',
+								title: 'Alben'
+							}
+						];
+						setTab(obj);
+					},
+					'photo/:id': function (id) {
+						$('header').show();
+						$(document).triggerHandler('openPhoto', [id]);
+						obj = [
+							{
+								url: 'album',
+								title: 'Alben'
+							}, {
+								url: 'photo/' + id,
+								title: 'Photos'
+							}
+						];
+						setTab(obj);
+					},
+					'photo/:album/show/:id': function (album, id) {
+						$('header').show();
+						$(document).triggerHandler('openShow', [album, id]);
+						obj = [
+							{
+								url: 'album',
+								title: 'Alben'
+							}, {
+								url: 'photo/' + album,
+								title: 'Photos'
+							}, {
+								url: 'photo/' + album + '/show/' + id,
+								title: 'Show'
+							}
+						];
+						setTab(obj);
+					},
+					'photo/:album/edit/:id': function (album, id) {
+						$('header').show();
+						$(document).triggerHandler('openEdit', [album, id]);
+						obj = [
+							{
+								url: 'album',
+								title: 'Alben'
+							}, {
+								url: 'photo/' + album,
+								title: 'Photos'
+							}, {
+								url: 'photo/' + album + '/edit/' + id,
+								title: 'Edit'
+							}
+						];
+						setTab(obj);
+					},
+					'signin': function (id) {
+						$('header').hide();
+						$(document).triggerHandler('openSignin', [id]);
+						obj = [
+							{
+								url: 'album',
+								title: 'Album'
+							}
+						];
+						setTab(obj);
+					},
+					'*': function () {
+						$('header').show();
+						$(document).triggerHandler('openAlbum');
+						obj = [
+							{
+								url: 'album',
+								title: 'Album'
+							}
+						];
+						setTab(obj);
+					}
+				});
+			});
+			/*http://projects.jga.me/routie/#toc1*/
+		</script>
+	</body>
 </html>

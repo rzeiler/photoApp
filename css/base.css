@@ -111,8 +111,15 @@ footer.page-footer {
 	padding-right: 15px;
 }
 
+.logview {
+	  overflow: auto;
+}
+
+.logview span {
+	display: block;
+}
+
 .workplace {
-	background-color: #333;
 	display: block;
 	position: relative;
 	border-radius: 2px 2px 0 0;
@@ -124,9 +131,10 @@ footer.page-footer {
 	text-align: center;
 }
 
-.workplace canvas, .workplace img {
+
+/*.workplace canvas, .workplace img {
 	display: none;
-}
+}*/
 
 .row.option a {
 	display: block;
@@ -167,6 +175,7 @@ footer.page-footer {
 
 .card, .card .card-image, .card .options {
 	transition: all .5s ease-in-out;
+	min-height: 100px;
 }
 
 .card:hover {
@@ -178,11 +187,11 @@ footer.page-footer {
 	opacity: .5
 }
 
-.card .options{
+.card .options {
 	opacity: .1;
 	position: absolute;
 }
 
-.card:hover .options{
+.card:hover .options {
 	opacity: 1;
 }

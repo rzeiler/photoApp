@@ -1,0 +1,17 @@
+<div ng-repeat="picture in pictures">
+  <div class="col s6 m4 l2">
+    <div class="card hoverable" id="card{{picture.id}}">
+      <div class="options">
+        <a class="waves-effect waves-teal btn-flat white-text" ng-click="open(picture.id)"><i class="material-icons">desktop_windows</i>
+        </a>
+        <a class="waves-effect waves-teal btn-flat white-text" ng-click="edit(picture.id)"><i class="material-icons">mode_edit</i>
+        </a>
+        <a class="waves-effect waves-teal btn-flat white-text" ng-click="delete(picture.id,picture.src)"><i class="material-icons">delete</i>
+        </a>
+      </div>
+      <div class="card-image" ng-click="open(picture.id)">
+        <img ng-src="{{picture.src}}" alt="{{picture.title}}"/>
+      </div>
+    </div>
+  </div>
+</div>

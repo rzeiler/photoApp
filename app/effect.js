@@ -30,6 +30,7 @@
         }, options);
         o = this;
         o.on('load', function() {
+          alert('asasd');
             img = this;
             caman = Caman(img);
             // Listen to all CamanJS instances

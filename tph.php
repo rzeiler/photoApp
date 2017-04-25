@@ -3,12 +3,15 @@
   session_start();
   $date = new DateTime();
   $postdata = file_get_contents('php://input');
-  $request = json_decode($postdata);
+
+$request = (object) $_GET;
+
   $ini = parse_ini_file('db.ini');
   $arr = array();
+  $arr = array_merge($arr, array('message' => $request->action));
 
-  error_reporting(E_ALL);
-  ini_set('display_errors', '1');
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', '1');
 
   /* http://www.w3schools.com/php/php_mysql_select.asp */
   if (isset($request->action)) {
@@ -47,10 +50,20 @@
                   $folderId = $conn->insert_id;
                   $sql = "DELETE FROM access  WHERE folder=$folderId;";
                   $conn->query($sql);
-                  foreach ($request->access as $item) {
-                      $sql = "INSERT INTO access (account,folder) VALUES ($item,$folderId);";
-                      $conn->query($sql);
+                  if (isset($request->access)) {
+                      foreach ($request->access as $item) {
+                          $sql = "INSERT INTO access (account,folder) VALUES ($item,$folderId);";
+                          $conn->query($sql);
+                      }
                   }
+              } else {
+                  $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
+              }
+          }
+          if ($request->action == 'remove_folder' && isset($request->id)) {
+              $sql = "DELETE FROM folders  WHERE if=$request->id;";
+              if ($conn->query($sql) === true) {
+                  $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
               } else {
                   $arr = array_merge($arr, array('message' => 'Error: '.$conn->error));
               }
@@ -140,6 +153,28 @@
               $arr = array_merge($arr, array('photo' => $tmp));
               unset($tmp);
           }
+
+          /* get package */
+          if ($request->action == 'get_package' && isset($request->id)) {
+              $zip = new ZipArchive();
+              $zipname = '/'.session_id().'.zip';
+              $res = $zip->open(__DIR__.$zipname, ZipArchive::CREATE);
+              if ($res === true) {
+                  $sql = " SELECT p.id, p.title, p.date, mime_type, folder_id, extension FROM picture AS p LEFT JOIN folders AS f ON f.id=p.folder_id WHERE removed=0 AND folder_id=$request->id AND f.owner=$user OR $user IN (SELECT a.account FROM access AS a WHERE a.folder=f.id AND a.account=$user) ORDER BY p.id ";
+                  $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                          $zip->addFile(__DIR__.'/photo/'.$row['id'].'.'.$row['extension'], $row['title'].'.'.$row['extension']);
+                      }
+                  }
+                  $arr = array_merge($arr, array('package' => $zipname));
+                  $zip->close();
+              } else {
+                  $arr = array_merge($arr, array('error' => " no zip $res"));
+              }
+              unset($tmp);
+          }
+
           /* remove_picture */
           if ($request->action == 'remove_picture' && isset($request->id) && isset($request->path)) {
               $sql = "DELETE FROM picture WHERE id=$request->id AND account_id=$user;";

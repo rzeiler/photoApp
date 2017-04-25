@@ -1,27 +1,37 @@
-<div class="row">
-	<div ng-repeat="album in parentobj.albums">
-		<div class="col s12 m6 l3">
-			<div class="card hoverable">
-				<div class="options">
-					<a class="waves-effect waves-teal btn-flat white-text" ng-click="open(album.id,album.title)"><i class="material-icons">desktop_windows</i>
-					</a>
-					<a class="waves-effect waves-teal btn-flat white-text" ng-click="edit(album.id,album.title)"><i class="material-icons">mode_edit</i>
-					</a>
-					<a class="waves-effect waves-teal btn-flat white-text" ng-click="delete(album.id,album.title)"><i class="material-icons">delete</i>
-					</a>
-				</div>
-				<div class="card-image" ng-click="open(album.id,album.title)">
-					<img ng-src="{{album.src}}" alt="{{album.title}}"/>
-					<span class="card-title">{{album.title}}</span>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="row" id="albums">
+
 </div>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	<button data-target="modalAlbum" type="button" class="btn-floating btn waves-effect waves-light blue lighten-1">
+	<button data-target="albumModal" type="button" class="btn-floating btn waves-effect waves-light blue lighten-1">
 		<i class="material-icons">add</i>
 	</button>
 </div>
-<!-- Modal Structure -->
-<div ng-include="templateUrl"></div>
+<div id="albumModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4> <span class="teal lighten-2 badge white-text">Create by {{name}}</span></h4>
+        <div class="row">
+            <div class="input-field col s12 ">
+                <input ng-model="tit" ng-change="change()" id="tit" type="text" class="validate">
+                <label for="tit" data-error="field is required">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input ng-model="des" id="des" type="text" class="validate">
+                <label for="des" data-error="field is required">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="acc" multiple>
+
+                </select>
+                <label>Set Access</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span class="modal-action modal-close waves-effect waves-green btn-flat">Abort</span>
+        <span class="modal-action modal-close waves-effect waves-green btn-flat save">Save</span>
+    </div>
+</div>

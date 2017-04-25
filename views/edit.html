@@ -1,152 +1,155 @@
-<div class="row ">
-    <div class="col s12">
-        <div class="workplace">
-            <img src="{{picture.src}}" alt="{{picture.title}}" id="Image" />
-        </div>
-    </div>
+<br>
+<br>
+<div class="row">
+	<div class="col s8">
+		<div class="workplace grey darken-3">
+			<canvas id="canvas" width="300" height="300"></canvas>
+		</div>
+	</div>
+	<div class="col s4 logview"></div>
 </div>
 <div class="row">
-    <div class="col s12">
-        <ul class="tabs">
-            <li class="tab col s3">
-                <a href="#test1">Filter</a>
-            </li>
-            <li class="tab col s3">
-                <a href="#test2">Adjust</a>
-            </li>
-            <li class="tab col s3">
-                <a href="#test3">Rotate</a>
-            </li>
-        </ul>
-    </div>
-    <div id="test1" class="col s12">
-        <ul class="col s12" id="filters">
-            <li>
-                <a class="filter" data-filter="revert" data-value="true">Normal</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="vintage">Vintage</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="sepia" data-value="20">Sepia</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="lomo">Lomo</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="clarity">Clarity</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="sincity">Sin City</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="sunrise">Sunrise</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="crossprocess">Cross Process</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="orangepeel">Orange Peel</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="love">Love</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="grungy">Grungy</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="jarques">Jarques</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="pinhole">Pinhole</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="oldboot">Old Boot</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="glowingsun">Glowing Sun</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="hazydays">Hazy Days</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="hermajesty">Her Majesty</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="nostalgia">Nostalgia</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="hemingway">Hemingway</a>
-            </li>
-            <li>
-                <a class="filter" data-filter="concentrate">Concentrate</a>
-            </li>
-        </ul>
-    </div>
-    <div id="test2" class="col s12">
-        <p class="range-field">
-            <label>
-                brightness
-            </label>
-            <input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="brightness">
-        </p>
-        <p class="range-field">
-            <label>
-                saturation
-            </label>
-            <input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="saturation">
-        </p>
-        <p class="range-field">
-            <label>
-                exposure
-            </label>
-            <input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="exposure">
-        </p>
-        <p class="range-field">
-            <label>
-                sharpen
-            </label>
-            <input type="range" class="adjust" min="0" max="100" step="1" value="0" data-filter="sharpen">
-        </p>
-        <p class="range-field">
-            <label>
-                hue
-            </label>
-            <input type="range" class="adjust" min="0" max="300" value="0" data-filter="hue">
-        </p>
-        <p class="range-field">
-            <label>
-                sepia
-            </label>
-            <input type="range" class="adjust" min="0" max="100" value="0" data-filter="sepia">
-        </p>
-    </div>
-    <div id="test3" class="col s12">
-        <a class="filter waves-effect waves-light btn" ng-model="btn_rotate" data-filter="rotate" data-value="-90">
-            <i class="material-icons">rotate_left</i>
-        </a>
-        <a class="filter waves-effect waves-light btn" ng-model="btn_rotate" data-filter="rotate" data-value="90">
-            <i class="material-icons">rotate_right</i>
-        </a>
-    </div>
+	<div class="col s12">
+		<ul class="tabs opt">
+			<li class="tab col s3">
+				<a href="#test1">Filter</a>
+			</li>
+			<li class="tab col s3">
+				<a href="#test2">Adjust</a>
+			</li>
+			<li class="tab col s3">
+				<a href="#test3">Rotate</a>
+			</li>
+		</ul>
+	</div>
+	<div id="test1" class="col s12">
+		<ul class="col s12" id="filters">
+			<li>
+				<a class="filter" data-filter="revert" data-value="true">Normal</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="vintage">Vintage</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="sepia" data-value="20">Sepia</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="lomo">Lomo</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="clarity">Clarity</a>
+			</li>
+			<!-- <li>
+				<a class="filter" data-filter="sincity">Sin City</a>
+			</li> -->
+			<li>
+				<a class="filter" data-filter="sunrise">Sunrise</a>
+			</li>
+			<!-- <li>
+				<a class="filter" data-filter="crossprocess">Cross Process</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="orangepeel">Orange Peel</a>
+			</li> -->
+			<li>
+				<a class="filter" data-filter="love">Love</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="grungy">Grungy</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="jarques">Jarques</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="pinhole">Pinhole</a>
+			</li>
+			<!--<li>
+				<a class="filter" data-filter="oldboot">Old Boot</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="glowingsun">Glowing Sun</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="hazydays">Hazy Days</a>
+			</li>
+			 <li>
+				<a class="filter" data-filter="hermajesty">Her Majesty</a>
+			</li> -->
+			<li>
+				<a class="filter" data-filter="nostalgia">Nostalgia</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="hemingway">Hemingway</a>
+			</li>
+			<li>
+				<a class="filter" data-filter="concentrate">Concentrate</a>
+			</li>
+		</ul>
+	</div>
+	<div id="test2" class="col s12">
+		<p class="range-field">
+			<label>
+				brightness
+			</label>
+			<input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="brightness">
+		</p>
+		<p class="range-field">
+			<label>
+				saturation
+			</label>
+			<input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="saturation">
+		</p>
+		<p class="range-field">
+			<label>
+				exposure
+			</label>
+			<input type="range" class="adjust" min="-100" max="100" step="1" value="0" data-filter="exposure">
+		</p>
+		<p class="range-field">
+			<label>
+				sharpen
+			</label>
+			<input type="range" class="adjust" min="0" max="100" step="1" value="0" data-filter="sharpen">
+		</p>
+		<p class="range-field">
+			<label>
+				hue
+			</label>
+			<input type="range" class="adjust" min="0" max="300" value="0" data-filter="hue">
+		</p>
+		<p class="range-field">
+			<label>
+				sepia
+			</label>
+			<input type="range" class="adjust" min="0" max="100" value="0" data-filter="sepia">
+		</p>
+	</div>
+	<div id="test3" class="col s12">
+		<a class="filter waves-effect waves-light btn" ng-model="btn_rotate" data-filter="rotate" data-value="-90">
+			<i class="material-icons">rotate_left</i>
+		</a>
+		<a class="filter waves-effect waves-light btn" ng-model="btn_rotate" data-filter="rotate" data-value="90">
+			<i class="material-icons">rotate_right</i>
+		</a>
+	</div>
 </div>
 <div id="modalDelete" class="modal">
-    <div class="modal-content">
-        <h4>Delete</h4>
-        <p>You are sure?</p>
-    </div>
-    <div class="modal-footer">
-        <span class="delete_click modal-action modal-close waves-effect waves-green btn-flat">Delete</span>
-        <span class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</span>
-    </div>
+	<div class="modal-content">
+		<h4>Delete</h4>
+		<p>You are sure?</p>
+	</div>
+	<div class="modal-footer">
+		<span class="delete_click modal-action modal-close waves-effect waves-green btn-flat">Delete</span>
+		<span class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</span>
+	</div>
 </div>
 <div id="mProcessing" class="modal">
-    <div class="modal-content">
-        <h4>Picture processing</h4>
-        <p class="info"></p>
-    </div>
+	<div class="modal-content">
+		<h4>Picture processing</h4>
+		<p class="info"></p>
+	</div>
 </div>
-<div class="preloader-holder">
+<!-- <div class="preloader-holder">
     <div class="preloader-text">
         ...
     </div>
@@ -163,4 +166,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

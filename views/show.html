@@ -3,12 +3,7 @@
         <div class="indeterminate"></div>
     </div>
     <ul class="slides grey darken-4">
-        <li ng-repeat="picture in pictures">
-            <img ng-src="{{picture.src}}" data-id="{{picture.id}}" alt="bild" ng-init="init(picture.id)">
-            <div class="caption {{picture.cssclass}}">
-                <h6>{{title}}</h6>
-            </div>
-        </li>
+
     </ul>
 </div>
 <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 25px;">
@@ -16,32 +11,32 @@
         <i class="material-icons">menu</i>
     </a>
     <ul>
-        <li ng-click="exit()">
+        <li id="exit">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons">close</i>
             </a>
         </li>
-        <li ng-click="prev()">
+        <li id="prev">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons">fast_rewind</i>
             </a>
         </li>
-        <li ng-click="pause()">
+        <li id="pause">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons pause">pause_circle_outline</i>
             </a>
         </li>
-        <li ng-click="play()">
+        <li id="play">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons play">play_circle_outline</i>
             </a>
         </li>
-        <li ng-click="next()">
+        <li id="next">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons">fast_forward</i>
             </a>
         </li>
-        <li ng-click="edit()">
+        <li id="edit">
             <a class="btn-floating blue lighten-1">
                 <i class="material-icons">mode_edit</i>
             </a>
